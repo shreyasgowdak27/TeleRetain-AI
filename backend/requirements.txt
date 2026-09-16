@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+pymongo[srv]
+python-dotenv
+scikit-learn
+imbalanced-learn
+joblib
+pandas
+numpy
+pydantic

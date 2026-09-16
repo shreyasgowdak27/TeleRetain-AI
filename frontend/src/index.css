@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #F9FAFB;
+  transition: background-color 200ms ease;
+}
+
+/* Custom scrollbar for chat */
+.chat-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: #E5E7EB;
+  border-radius: 3px;
+}
+.chat-scroll::-webkit-scrollbar-thumb:hover {
+  background: #D1D5DB;
+}
+
+/* Horizontal scroll container scoped to the table only — never hijacks
+   the page's vertical scroll. touch-action: pan-x lets touch devices
+   swipe horizontally within the table without triggering page gestures. */
+.table-scroll {
+  overflow-x: auto;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Header scroll container: nav + actions sit in a horizontally scrollable
+   row. Nothing is ever hidden or clipped — every item is reachable by
+   scrolling. The logo is pinned outside this container. */
+.header-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+}
+.header-scroll::-webkit-scrollbar {
+  display: none; /* Chrome/Safari: keep the bar invisible */
+}
+.header-logo {
+  font-size: clamp(14px, 3.5vw, 18px);
+  white-space: nowrap;
+}
+
+/* Desktop assistant panel slide-in */
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
