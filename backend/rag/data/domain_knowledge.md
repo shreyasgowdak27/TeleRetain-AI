@@ -24,4 +24,4 @@ Each reason maps to exactly one offer:
 - general_risk → Personalized call from retention team (Type: Human Outreach, Priority: Low)
 
 HOW THE MODEL WORKS (for new agents)
-TeleRetain AI uses a Random Forest machine learning model trained on historical telecom customer data (27 encoded features — contract type, tenure, charges, services, demographics). The model outputs a churn probability, which is converted into a risk tier (Low/Medium/High). Separately, a rule-based reason engine (not the ML model itself) explains WHY by checking the six patterns above in order and picking the first match. The offer is then automatically determined by that reason.
+TeleRetain AI uses a Random Forest machine learning model trained on historical telecom customer data (27 encoded features — contract type, tenure, charges, services, demographics). The model outputs a churn probability, which is converted into a risk tier (Low/Medium/High). Separately, a rule-based reason engine (not the ML model itself) explains WHY by checking the six patterns above in order and picking the first match. The offer is then automatically determined by that reason. 

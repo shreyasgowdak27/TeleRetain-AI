@@ -7,6 +7,7 @@ import pandas as pd
 from database import customers_collection
 from model import predict_churn, feature_columns
 from retention import identify_churn_reason, generate_retention_offer
+from rag.retrieval import CustomerNotFound, ask_chatbot
 
 app = FastAPI(title="TeleRetain AI", version="1.0.0")
 
@@ -165,3 +166,34 @@ def update_offer_status(customer_id: str, status: str):
         {"$set": {"offer_status": status}}
     )
     return {"message": f"Offer status updated to {status}"}
+
+
+# ─────────────────────────────────────────
+# ROUTE 5 — RAG CHATBOT
+# ─────────────────────────────────────────
+class ChatAskRequest(BaseModel):
+    customer_id: str
+    question: str
+
+
+@app.post("/chatbot/ask")
+def chatbot_ask(body: ChatAskRequest):
+    customer_id = body.customer_id.strip()
+    question = body.question.strip()
+    if not customer_id:
+        raise HTTPException(status_code=400, detail="customer_id is required")
+    if not question:
+        raise HTTPException(status_code=400, detail="question is required")
+
+    try:
+        answer = ask_chatbot(customer_id, question)
+    except CustomerNotFound as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+    except Exception as exc:
+        # Fail loudly (no empty/default answer) so a Groq or Chroma error
+        # is visible in the response instead of a spinning UI.
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+    return {"answer": answer}

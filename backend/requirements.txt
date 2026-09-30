@@ -8,3 +8,9 @@ joblib
 pandas
 numpy
 pydantic
+langchain
+langchain-community
+langchain-text-splitters
+chromadb
+sentence-transformers
+langchain-groq
