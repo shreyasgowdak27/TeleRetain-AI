@@ -27,3 +27,10 @@ decisions — this is a real-world product, not an academic exercise, so
 decisions should hold up against real usage and requirements, not just
 sound defensible. Do not move on to a new unit or topic without his
 explicit go-ahead.
+
+## Context files
+
+- [frontend/AGENTS.md](frontend/AGENTS.md): React Vite dashboard, theme tokens, axios client
+- [backend/AGENTS.md](backend/AGENTS.md): FastAPI, Mongo access, predict and retention routes
+- [backend/rag/AGENTS.md](backend/rag/AGENTS.md): Hybrid RAG ingest and retrieval, still wiring the UI
+- [ml_model/AGENTS.md](ml_model/AGENTS.md): Committed pickle artifacts and training notebook

@@ -1,6 +1,14 @@
+import os
+from pathlib import Path
+
+from dotenv import load_dotenv
 from pymongo import MongoClient
 
-MONGO_URI = "mongodb+srv://Shreyas_db_user:TeleRetain2026@cluster0.1ja94wl.mongodb.net/teleretain?appName=Cluster0"
+load_dotenv(Path(__file__).resolve().parent / ".env")
+
+MONGO_URI = os.getenv("MONGODB_URI")
+if not MONGO_URI:
+    raise RuntimeError("MONGODB_URI is not set")
 
 client = MongoClient(MONGO_URI)
 db = client["teleretain"]

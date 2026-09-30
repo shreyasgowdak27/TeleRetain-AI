@@ -2,7 +2,7 @@ fastapi
 uvicorn
 pymongo[srv]
 python-dotenv
-scikit-learn
+scikit-learn==1.8.0
 imbalanced-learn
 joblib
 pandas

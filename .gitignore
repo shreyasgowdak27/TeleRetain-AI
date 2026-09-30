@@ -6,3 +6,5 @@ backend/rag/chroma_db/
 node_modules/
 dist/
 .DS_Storef
+.agents/
+skills-lock.json
