@@ -5,6 +5,12 @@ backend/rag/chroma_db/
 *.pyc
 node_modules/
 dist/
-.DS_Storef
+.DS_Store
 .agents/
 skills-lock.json
+CLAUDE.md
+**/CLAUDE.md
+backend/AGENTS.md
+backend/rag/AGENTS.md
+frontend/AGENTS.md
+ml_model/AGENTS.md
